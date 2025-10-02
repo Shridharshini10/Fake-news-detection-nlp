@@ -1,15 +1,24 @@
-import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import PassiveAggressiveClassifier
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import joblib
 
-# Load dataset
-df = pd.read_csv('data/fake_news.csv')  # Make sure this file exists
+# Sample news articles
+texts = [
+    "NASA confirms water on Mars",                      # Real
+    "Aliens built the pyramids, scientists say",        # Fake
+    "Government launches new healthcare plan",          # Real
+    "Celebrity cloned in secret lab",                   # Fake
+    "New vaccine approved by WHO",                      # Real
+    "Time traveler spotted in 1920s photo",             # Fake
+]
+
+# Corresponding labels (0 = Real, 1 = Fake)
+labels = [0, 1, 0, 1, 0, 1]
 
 # Split data
-X_train, X_test, y_train, y_test = train_test_split(df['text'], df['label'], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(texts, labels, test_size=0.2, random_state=42)
 
 # Vectorize text
 vectorizer = TfidfVectorizer(stop_words='english', max_df=0.7)
