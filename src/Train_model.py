@@ -14,7 +14,7 @@ texts = [
     "Time traveler spotted in 1920s photo",             # Fake
 ]
 
-# Corresponding labels (0 = Real, 1 = Fake)
+# Labels: 0 = Real, 1 = Fake
 labels = [0, 1, 0, 1, 0, 1]
 
 # Split data
